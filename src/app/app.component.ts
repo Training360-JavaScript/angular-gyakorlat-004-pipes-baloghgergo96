@@ -17,7 +17,7 @@ export class AppComponent {
    * Hozd létre az alábbi változót.
    * @var phrase {string} - a keresőkifejezés
    */
-  phrase: string;
+  phrase: string = "";
 
 
   constructor(
@@ -38,8 +38,8 @@ export class AppComponent {
    * @returns {void}
    */
 
-   onChangePhrase(event): void {
-     this.phrase = event.target as HTMLInputElement
+   onChangePhrase(event: Event): void {
+     this.phrase = (event.target as HTMLInputElement).value
    }
 
 }

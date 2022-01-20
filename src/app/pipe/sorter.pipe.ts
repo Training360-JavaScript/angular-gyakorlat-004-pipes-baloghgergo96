@@ -13,7 +13,7 @@ export class SorterPipe implements PipeTransform {
    */
   transform(value: any[], key: string): any[] {
     // A KÖVETKEZŐ SORT TÁVOLÍTSD EL!!!
-    return value;
+
 
     /**
      * FELADAT!
@@ -21,7 +21,9 @@ export class SorterPipe implements PipeTransform {
      * térj vissza a value változóval.
      */
 
-
+    if (!Array.isArray(value) || !key) {
+      return value;
+    }
 
     /**
      * FELADAT!
@@ -33,7 +35,13 @@ export class SorterPipe implements PipeTransform {
      *  összehasonlításának az eredményével.
      */
 
-
+     return value.sort((a: any, b: any) => {
+      if (!isNaN(a[key]) && !isNaN(b['key'])) {
+        return a[key] - b[key];
+      } else {
+        return a[key].toString().toLowerCase().localeCompare(b[key].toString().toLowerCase());
+      }
+    });
   }
 
 }
